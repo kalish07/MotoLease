@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
-import CustomAppBar from '../components/CustomAppBar'; // Adjust the path as needed
+import CustomAppBar from '../components/CustomAppBar'; 
 
 const RegisterPage = () => {
   const [form, setForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
@@ -65,6 +65,7 @@ const RegisterPage = () => {
                 type="submit"
                 variant="contained"
                 fullWidth
+                href='/'
                 sx={{ mt: 2, backgroundColor: '#1e90ff', '&:hover': { backgroundColor: '#1c86ee' } }}
               >
                 Register

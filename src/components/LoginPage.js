@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { Link } from 'react-router-dom';
-import CustomAppBar from '../components/CustomAppBar'; // Adjust the path as needed
+import CustomAppBar from '../components/CustomAppBar'; 
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -62,6 +62,7 @@ const LoginPage = () => {
               <Button
                 type="submit"
                 variant="contained"
+                href='/'
                 fullWidth
                 sx={{ mt: 2, bgcolor: '#1e90ff', '&:hover': { bgcolor: '#1c86ee' } }}
               >

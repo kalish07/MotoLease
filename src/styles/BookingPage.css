@@ -8,8 +8,8 @@ body {
 
 .booking-page {
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
+  margin: 0;
 }
 
 .MuiAppBar-root {
@@ -30,7 +30,6 @@ body {
   background: #2b2b2b;
   border-right: 1px solid #333;
   padding: 20px;
-  z-index: 1000;
 }
 
 .sidebar h2 {
@@ -57,28 +56,6 @@ body {
   margin-top: 10px;
 }
 
-.filter-section .checkbox-group {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.checkbox-group label {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0;
-  padding: 4px 0;
-}
-
-.checkbox-group input[type="checkbox"] {
-  margin-right: 10px;
-  transform: scale(1.2);
-  vertical-align: middle;
-  margin-top: 2px;
-}
-
 .main-content {
   margin-left: 270px;
   margin-top: 64px;
@@ -88,10 +65,7 @@ body {
   z-index: 900;
 }
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.results-header {
   margin-bottom: 20px;
 }
 
@@ -107,6 +81,7 @@ body {
   padding: 15px;
   border-radius: 8px;
   transition: transform 0.3s, box-shadow 0.3s;
+  text-decoration: none;
 }
 
 .car-card:hover {
@@ -131,4 +106,9 @@ body {
 .car-card p {
   color: #ddd;
   margin: 5px 0;
+}
+
+.car-card a {
+  text-decoration: none;
+  color: inherit;
 }

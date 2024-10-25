@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import "../styles/BookingPage.css";
-import carData from '../data/carData';
 import FilterCheckboxGroup from './FilterCheckboxGroup';
 import CustomAppBar from '../components/CustomAppBar';
+import ChatBot from './ChatBot';
 
 const BookingPage = () => {
   const [filters, setFilters] = useState({
@@ -18,6 +19,37 @@ const BookingPage = () => {
     addOns: [],
     deliveryType: false,
   });
+
+  const [carData, setCarData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchCarData = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/api/cars');
+        if (!response.ok) {
+          throw new Error('Failed to fetch car data');
+        }
+        const data = await response.json();
+        setCarData(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchCarData();
+  }, []);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   const filteredCars = carData.filter(car => {
     const carPrice = parseInt(car.price.replace(/[^\d]/g, ''));
@@ -103,7 +135,7 @@ const BookingPage = () => {
 
         <div className="main-content">
           <header>
-            <h2>Showing {filteredCars.length} cars</h2>
+            <h2 className="results-header">Showing {filteredCars.length} cars</h2>
           </header>
 
           <div className="cars-list">
@@ -111,18 +143,21 @@ const BookingPage = () => {
               <p>No cars available</p>
             ) : (
               filteredCars.map(car => (
-                <div key={car.id} className="car-card">
-                  <img src={car.image} alt={car.name} />
-                  <h3>{car.name}</h3>
-                  <p>Price: {car.price}</p>
-                  <p>Distance: {car.distance}</p>
-                  <p>Rating: {car.rating}</p>
-                </div>
+                <Link key={car.id} to={`/car/${car.id}`}>
+                  <div className="car-card">
+                    <img src={car.image} alt={car.name} className="car-image" />
+                    <h3 className="car-name">{car.name}</h3>
+                    <p className="car-price">Price: {car.price}</p>
+                    <p className="car-distance">Distance: {car.distance}</p>
+                    <p className="car-rating">Rating: {car.rating}</p>
+                  </div>
+                </Link>
               ))
             )}
           </div>
         </div>
       </div>
+      <ChatBot />
     </div>
   );
 };

@@ -3,7 +3,8 @@ import '../styles/HomePage.css';
 import { Container, Typography, Button, Grid, TextField, Box, Card, CardContent, CardMedia } from '@mui/material';
 import CustomAppBar from './CustomAppBar';
 import { useNavigate } from 'react-router-dom';
-
+import ChatBot from './ChatBot';
+import Submodel from './Subscriptionmodel'
 const cardData = [
   {
     image: "https://images.unsplash.com/photo-1610647752706-3bb12232b3ab?q=80&w=2825&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
@@ -46,6 +47,7 @@ const HomePage = () => {
   return (
     <>
       <CustomAppBar />
+      
       <Container className="homepage" disableGutters maxWidth={false} sx={{ px: 0 }}>
         {/* Hero Section */}
         <Box className="hero">
@@ -76,7 +78,7 @@ const HomePage = () => {
             {['Pickup Location', 'Drop-off Location', 'Date and Time'].map(label => (
               <TextField key={label} label={label} variant="outlined" />
             ))}
-            <Button variant="contained" color="primary" size="large">Get Car</Button>
+            <Button variant="contained" color="primary" href='/booking' size="large">Get Car</Button>
           </Box>
         </Box>
 
@@ -100,6 +102,7 @@ const HomePage = () => {
             ))}
           </Grid>
         </Box>
+        <Submodel />
 
         {/* How It Works Section */}
         <Box className="how-it-works">
@@ -121,6 +124,8 @@ const HomePage = () => {
             ))}
           </Grid>
         </Box>
+        
+        <ChatBot />
       </Container>
     </>
   );
