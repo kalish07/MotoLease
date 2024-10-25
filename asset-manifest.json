@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/Motolease/static/css/main.7a9549de.css",
+    "main.js": "/Motolease/static/js/main.2a4c2d26.js",
+    "static/media/logo.jpg": "/Motolease/static/media/logo.657d342cce35c4d2d6ad.jpg",
+    "index.html": "/Motolease/index.html",
+    "main.7a9549de.css.map": "/Motolease/static/css/main.7a9549de.css.map",
+    "main.2a4c2d26.js.map": "/Motolease/static/js/main.2a4c2d26.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7a9549de.css",
+    "static/js/main.2a4c2d26.js"
+  ]
+}
